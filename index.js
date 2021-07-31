@@ -8,6 +8,7 @@ app.set('views', path.join(__dirname, 'views'))
     .get('/', (req, res) => res.render('pages/index'))
     .post('/htmltopdf', (req, res) => 
      {
+         console.log(req.body);
         this.handler(req.body, null, (data)=>res.json(data));
         // req.body; // JavaScript object containing the parse JSON
         // res.json(req.body);
@@ -24,7 +25,7 @@ exports.handler = function handler(event, context, callback) {
         callback(errorResponse);
         return;
     }
-
+    console.log(event.html);
     wkhtmltopdf(event.html)
         .then(buffer => {
             callback(null, {

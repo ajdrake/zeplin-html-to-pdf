@@ -5,7 +5,6 @@ module.exports = function (html, options = []) {
         const bufs = [];
         const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `lib/wkhtmltopdf ${options.join(" ")} - - | cat`]);
         
-        
         proc.on("error", error => {
             reject(error);
         }).on("exit", code => {

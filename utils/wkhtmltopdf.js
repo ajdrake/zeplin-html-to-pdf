@@ -5,7 +5,7 @@ module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        const ls = exec('ls -l', function (error, stdout, stderr) {
+        const ls = exec(wkhtmltopdf_path + ' news.google.com', function (error, stdout, stderr) {
             if (error) {
               console.log(error.stack);
               console.log('Error code: '+error.code);
@@ -15,7 +15,7 @@ module.exports = function (html, options = []) {
             console.log('Child Process STDOUT: '+stdout);
             console.log('Child Process STDERR: '+stderr);
 
-            resolve("success");
+            resolve(stdout);
           });
           
           ls.on('exit', function (code) {

@@ -10,8 +10,6 @@ app.set('views', path.join(__dirname, 'views'))
      {
          console.log(req.body);
         this.handler(req.body, null, (data)=>res.json(data));
-        // req.body; // JavaScript object containing the parse JSON
-        // res.json(req.body);
       })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
@@ -28,7 +26,7 @@ exports.handler = function handler(event, context, callback) {
     console.log(event.html);
     wkhtmltopdf(event.html)
         .then(buffer => {
-            callback(null, {
+            callback({
                 data: buffer.toString("base64")
             });
         }).catch(error => {

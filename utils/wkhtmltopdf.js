@@ -1,5 +1,5 @@
 const { spawn } = require("child_process");
-var wkhtmltopdf_path = './bin/wkhtmltopdf-linux-amd64';
+var wkhtmltopdf_path = 'wkhtmltopdf';
 
 module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {

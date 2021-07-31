@@ -1,4 +1,4 @@
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 var wkhtmltopdf_path = 'wkhtmltopdf';
 
 module.exports = function (html, options = []) {

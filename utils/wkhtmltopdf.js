@@ -5,8 +5,8 @@ module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `./bin/wxkhtmltopdf ${options.join(" ")} - - | cat`]);
-        // console.log("html" + html);
+        // const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `./bin/wkhtmltopdf ${options.join(" ")} - - | cat`]);
+        const proc = spawn("/bin/sh", ["ls"]);
 
         proc.on("error", error => {
             console.log("3");

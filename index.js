@@ -1,3 +1,19 @@
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+const app = express();
+app.use(express.json());
+app.set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'ejs')
+    .get('/', (req, res) => res.render('pages/index'))
+    .post('/htmltopdf', (req, res) => 
+     {
+        this.handler(req.body, null, (data)=>res.json(data));
+        // req.body; // JavaScript object containing the parse JSON
+        // res.json(req.body);
+      })
+    .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 process.env.PATH = `${process.env.PATH}:${process.env.LAMBDA_TASK_ROOT}`;
 const wkhtmltopdf = require("./utils/wkhtmltopdf");
 const errorUtil = require("./utils/error");

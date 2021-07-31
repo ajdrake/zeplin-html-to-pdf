@@ -4,7 +4,7 @@ module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `wkhtmltopdf ${options.join(" ")} - - | cat`]);
+        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `lib/wkhtmltopdf ${options.join(" ")} - - | cat`]);
         console.log("2");
         proc.on("error", error => {
             console.log("3");

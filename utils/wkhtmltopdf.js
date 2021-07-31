@@ -1,11 +1,24 @@
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 var wkhtmltopdf_path = 'wkhtmltopdf';
 
 module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        resolve("success");
+        
+        const ls = exec('ls -l', function (error, stdout, stderr) {
+            if (error) {
+              console.log(error.stack);
+              console.log('Error code: '+error.code);
+              console.log('Signal received: '+error.signal);
+            }
+            console.log('Child Process STDOUT: '+stdout);
+            console.log('Child Process STDERR: '+stderr);
+          });
+          
+          ls.on('exit', function (code) {
+            console.log('Child process exited with exit code '+code);
+          });
         // const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `./bin/wkhtmltopdf ${options.join(" ")} - - | cat`]);
         // const proc = spawn("/bin/sh", ["ls"]);
 

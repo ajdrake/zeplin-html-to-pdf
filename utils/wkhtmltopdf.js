@@ -1,10 +1,11 @@
 const { spawn } = require("child_process");
+var wkhtmltopdf_path = './bin/wkhtmltopdf-linux-amd64';
 
 module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `wkhtmltopdf ${options.join(" ")} - - | cat`]);
+        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `{wkhtmltopdf_path} ${options.join(" ")} - - | cat`]);
         console.log("html" + html);
 
         proc.on("error", error => {

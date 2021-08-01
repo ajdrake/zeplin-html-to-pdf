@@ -15,7 +15,7 @@ module.exports = function (html, options = []) {
             }
         });
 
-        proc.stdin.write(html);
+        // proc.stdin.write(html);
         proc.stdin.end();
 
         proc.stdout.on("data", data => {

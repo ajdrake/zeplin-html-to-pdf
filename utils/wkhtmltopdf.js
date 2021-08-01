@@ -5,7 +5,7 @@ module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         console.log("1");
         const bufs = [];
-        const ls = exec(wkhtmltopdf_path + ' https://news.google.com test.pdf', function (error, stdout, stderr) {
+        const ls = exec(wkhtmltopdf_path + ' https://news.google.com test.pdf && echo "--PDF--" && cat test.pdf', function (error, stdout, stderr) {
             if (error) {
               console.log(error.stack);
               console.log('Error code: '+error.code);
